@@ -1,16 +1,23 @@
-\documentclass[fleqn,10pt,lineno]{peerj}
+\documentclass[11pt]{article}
 \usepackage{calc}
 \usepackage{enumitem}
 \usepackage{amsmath}
-
-% Unicode encoding
+\usepackage[margin=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{hyperref}
-% \usepackage{biblatex}
-% \bibliography{draft}
+\usepackage{tcolorbox}
+\usepackage{natbib}
+\usepackage{lineno}
+\usepackage{authblk}
+\renewcommand*{\Affilfont}{\footnotesize}
+\renewcommand*{\Authfont}{\footnotesize}
+\makeatletter
+\renewcommand\AB@affilsepx{, \protect\Affilfont}
+\makeatother
 
-\title{Sustainable computational science:\\the ReScience initiative}
+
+\title{Sustainable computational science: the ReScience initiative}
 \author[1,$\dagger$,$\S$,$\star$]{Nicolas P. Rougier}
 \author[2,$\dagger$,$\star$]{Konrad Hinsen}
 \author[1,$\S$]{Frédéric Alexandre}
@@ -97,42 +104,20 @@
 \affil[39]{Department of Computer Science, Grinnell College, IA, USA}
 \affil[40]{Symerio, Palaiseau, France}
 \affil[41]{Neural Information Processing Group, University of Tübingen, Germany}
-\affil[$^{\star}$]{ReScience co-founder}
-\affil[$^{\dagger}$]{ReScience editor}
-\affil[$^{\ddagger}$]{ReScience reviewer}
-\affil[$^{\S}$]{ReScience author}
-\corrauthor[1]{Nicolas P. Rougier}{Nicolas.Rougier@inria.fr}
+\affil[${\star}$]{ReScience co-founder}
+\affil[${\dagger}$]{ReScience editor}
+\affil[${\ddagger}$]{ReScience reviewer}
+\affil[${\S}$]{ReScience author}
 
 
-\begin{abstract}
-  Computer science offers a large set of tools for prototyping, writing,
-  running, testing, validating, sharing and reproducing results, however
-  computational science lags behind.  In the best case, authors may provide
-  their source code as a compressed archive and they may feel confident their
-  research is reproducible. But this is not exactly true. James Buckheit and
-  David Donoho proposed more than two decades ago that an article about
-  computational results is advertising, not scholarship. The actual scholarship
-  is the full software environment, code, and data that produced the
-  result. This implies new workflows, in particular in peer-reviews. Existing
-  journals have been slow to adapt: source codes are rarely requested, hardly
-  ever actually executed to check that they produce the results advertised in
-  the article.  ReScience is a peer-reviewed journal that targets computational
-  research and encourages the explicit replication of already published
-  research, promoting new and open-source implementations in order to ensure
-  that the original research can be replicated from its description. To achieve
-  this goal, the whole publishing chain is radically different from other
-  traditional scientific journals. ReScience resides on GitHub where each new
-  implementation of a computational study is made available together with
-  comments, explanations, and software tests.
-\end{abstract}
+\date{}
 
-  
 \begin{document}
-
-\flushbottom
 \maketitle
-\thispagestyle{empty}
+\clearpage
 
+\thispagestyle{empty}
+\linenumbers
 
 \section*{Introduction}
 There is a replication crisis in Science \citep{Baker:2016, Munaf:2017}. This
@@ -320,10 +305,9 @@ the main motivation for the creation of the ReScience journal
 (\href{https://rescience.github.io}{rescience.github.io}) by Konrad Hinsen and
 Nicolas P. Rougier in September 2015.\\
 
-\begin{small}
-\textbf{Box 1.} Authors having  published in Rescience explain their motivation.\\
-
-\textbf{(\cite{stachelek:2016})} I was motivated to replicate the results of
+\begin{tcolorbox}
+\begin{footnotesize}
+\textbf{\cite{stachelek:2016}} I was motivated to replicate the results of
 the original paper because I feel that working through code supplements to blog
 posts has really helped me learn the process of scientific analysis. I could 
 have published my replication as a blog post but I wanted the exposure and 
@@ -335,7 +319,7 @@ notify the author of the original implementation about the replication's
 publication. I think this may lead to future correspondence. The original author suggested that he would consider submitting his own replications to
 ReScience in the future.\\
 
-\textbf{(\cite{topalidou:2015b})} Our initial motivation and the main reason
+\textbf{\cite{topalidou:2015b}} Our initial motivation and the main reason
 for replicating the model is that we needed it in order to collaborate with our
 neurobiologist colleagues. When we arrived in our new lab, the model had just
 been published (2013) but the original author had left the lab a few months before
@@ -348,7 +332,7 @@ replication to share the new code with colleagues. Since then, we have refined
 the model and made new predictions that have been confirmed. Our initial
 replication effort really gave the model a second life.\\
 
-\textbf{(\cite{viejo:2016})} Replicating previous work is a relatively routine
+\textbf{\cite{viejo:2016}} Replicating previous work is a relatively routine
 task every time we want to build a new model: either because we want to build
 on this previous work, or because we want to compare our new model to it. We also give replication tasks to
 M.Sc. students every year, as projects. In all these cases, we are confronted
@@ -359,26 +343,27 @@ solves the problem, but not so often (because of the {\em dog ate my hard
 which model works and which doesn't, and how a given model has to be parameterized
 to really work. Without any place to publish it, this knowledge is
 wasted. Publishing it in ReScience, opening the discussion publicly, will be a
-progress for all of us. \par
-\end{small}
+progress for all of us.\\ \par
+\end{footnotesize}
+\noindent \textbf{Box 1.} Authors having  published in Rescience explain their motivation.
+\end{tcolorbox}
+~\\
 
-
-ReScience is an openly-peer-reviewed journal that targets computational research
-and encourages the explicit replication of already published research. In order
-to provide the largest possible benefit to the scientific community, replications are
-required to be reproducible and open-source. In less than two years of existence, 12
-articles have been published and 3 are currently under review
-(\href{https://github.com/ReScience/ReScience-submission/pull/20}{\#20},
-\href{https://github.com/ReScience/ReScience-submission/pull/27}{\#27},
-\href{https://github.com/ReScience/ReScience-submission/pull/30}{\#30}). The
-editorial board covers a wide range of computational sciences (see
-\url{http://rescience.github.io/board/}) and more than 70 volunteers have registered to be reviewers. The scientific domains of published work
-are computational neuroscience, neuroimaging, computational ecology and
-computer graphics, with a majority in computational neuroscience. There is a
-strong bias towards successful replication (100\%); experience has
-taught us that researchers are reluctant to publish failed replications, even when they can prove that the original work is wrong. For young researchers,
-there is a social/professional risk in publishing articles that show
-results from a senior researcher to be wrong. Until we implement a
+ReScience is an openly-peer-reviewed journal that targets computational
+research and encourages the explicit replication of already published
+research. In order to provide the largest possible benefit to the scientific
+community, replications are required to be reproducible and open-source. In
+less than two years of existence, 16 articles have been published and 2 are
+currently under review. The editorial board covers a wide range of
+computational sciences (see \url{http://rescience.github.io/board/}) and more
+than 70 volunteers have registered to be reviewers. The scientific domains of
+published work are computational neuroscience, neuroimaging, computational
+ecology and computer graphics, with a majority in computational
+neuroscience. There is a strong bias towards successful replication (100\%);
+experience has taught us that researchers are reluctant to publish failed
+replications, even when they can prove that the original work is wrong. For
+young researchers, there is a social/professional risk in publishing articles
+that show results from a senior researcher to be wrong. Until we implement a
 certified anonymized submission process, this strong bias will most likely
 remain.\\
 
@@ -687,6 +672,7 @@ objectives, with nobody in a position to influence ReScience by
 explicit or implicit threats of reducing future funding.
 
 \begin{figure}
+  \begin{center}
   \includegraphics[width=0.75\columnwidth]{CoScience}
   \caption{\textbf{A} The ReScience publication chain starts from an
     original research article by authors A, published in a journal, in
@@ -705,6 +691,7 @@ explicit or implicit threats of reducing future funding.
     identified roles and will be certified as reproducible because it
     has been replicated by an independent group.}
   \label{fig:coscience}
+  \end{center}
 \end{figure}
 
 \section*{Outlook}
